@@ -16,6 +16,7 @@
     "clsx": "^2.1.1",
     "lucide-vue-next": "^0.378.0",
     "radix-vue": "^1.7.3",
+    "swiper": "^11.1.1",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "vue": "^3.4.21"
@@ -26,6 +27,8 @@
     "autoprefixer": "^10.4.19",
     "gh-pages": "^6.1.1",
     "postcss": "^8.4.38",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.14",
     "tailwindcss": "^3.4.3",
     "vite": "^5.2.0"
   }
