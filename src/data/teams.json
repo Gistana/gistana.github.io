@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "Yasdil Lasoma",
+        "role": "Fullstack Developer",
+        "image": "adi.png"
+    },
+    {
+        "id": 2,
+        "name": "Abdul Malik Matoha",
+        "role": "UI/UX & Frontend Dev",
+        "image": "malik.png",
+        "link": "https://www.linkedin.com/in/abdul-malik-matoha-8aa454254/"
+    },
+    {
+        "id": 3,
+        "name": "Tri Putra Fauzan H. Radji",
+        "role": "Frontend Dev",
+        "image": "fauzan.png",
+        "link": "https://www.linkedin.com/in/tri-putra-fauzan-h-radji-404810257/"
+    },
+    {
+        "id": 4,
+        "name": "Dhani Ardiyanto Syahdila",
+        "role": "Fullstack Developer",
+        "image": "dani.png"
+    },
+    {
+        "id": 5,
+        "name": "Mersita Tamrin",
+        "role": "Copywriter",
+        "image": "sita.png"
+    },
+    {
+        "id": 6,
+        "name": "Nanda Eka Cahya Utama",
+        "role": "UI/UX Designer",
+        "image": "anan.png"
+    },
+    {
+        "id": 7,
+        "name": "Moh Aqshal Safatullah Ibrahim",
+        "role": "Backend Dev",
+        "image": "aqshal.png"
+    },
+    {
+        "id": 8,
+        "name": "Jessica Thiony Rura Koyansow",
+        "role": "Copywriter",
+        "image": "jes.png"
+    },
+    {
+        "id": 9,
+        "name": "Putra Anshori Arta Amuda",
+        "role": "Copywriter & Marketing",
+        "image": "uta.png"
+    }
+]

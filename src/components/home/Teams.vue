@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
+import Teams from "../../../src/data/teams.json";
 </script>
 
 <template>
@@ -61,20 +62,20 @@ import { Pagination } from "swiper/modules";
           <team-card
             name="Mersita Tamrin"
             role="Copywriter"
-            image="malik.png"
+            image="sita.png"
           />
         </swiper-slide>
         <swiper-slide>
-          <team-card name="Slide 6" role="Front End Dev" image="malik.png" />
+          <team-card name="Nanda Eka Cahya Utama" role="UI/UX Designer" image="anan.png" />
         </swiper-slide>
         <swiper-slide>
-          <team-card name="Slide 7" role="Front End Dev" image="malik.png" />
+          <team-card name="Moh Aqshal Safatullah Ibrahim" role="Backend Dev" image="aqshal.png" />
         </swiper-slide>
         <swiper-slide>
-          <team-card name="Slide 8" role="Front End Dev" image="malik.png" />
+          <team-card name="Jessica Thiony Rura Koyansow" role="Copywriter" image="jes.png" />
         </swiper-slide>
         <swiper-slide>
-          <team-card name="Slide 9" role="Front End Dev" image="malik.png" />
+          <team-card name="Putra Anshori Arta Amuda" role="Copywriter & Marketing" image="uta.png" />
         </swiper-slide>
       </swiper>
     </div>
