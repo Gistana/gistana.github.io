@@ -1,6 +1,6 @@
 <template>
   <li>
-    <a :href="to" class="hover:text-yellow-600"><slot /></a>
+    <a :href="to" class="px-5 py-3 hover:text-yellow-600"><slot /></a>
   </li>
 </template>
 

@@ -3,7 +3,7 @@
     :href="link"
     target="_blank"
     :disabled="!link"
-    class="flex flex-col items-center justify-center gap-4 py-4 enabled:cursor-pointer"
+    class="mb-8 flex flex-col items-center justify-center gap-4 py-4 enabled:cursor-pointer"
     noreferrer
     noopener
   >

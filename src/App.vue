@@ -3,17 +3,19 @@ import { Button } from "@/components/ui/button";
 import { Navbar, NavLink, TeamCard } from "@/components";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
 </script>
 
 <template>
-  <Navbar>
-    <NavLink to="#layanan">Layanan</NavLink>
-    <NavLink to="#tentang">Tentang</NavLink>
-    <NavLink to="#tim">Tim</NavLink>
-  </Navbar>
+  <navbar>
+    <nav-link to="#layanan">Layanan</nav-link>
+    <nav-link to="#tentang">Tentang</nav-link>
+    <nav-link to="#tim">Tim</nav-link>
+  </navbar>
 
   <!-- Hero -->
-  <section>
+  <section class="mt-20">
     <div class="container flex items-center justify-between gap-32">
       <div class="flex flex-[2] flex-col gap-4">
         <h1 class="text-4xl font-bold">
@@ -76,10 +78,20 @@ import "swiper/css";
   <!-- Tim -->
   <section id="tim" class="my-48">
     <div class="container">
-      <h3 class="text-center text-3xl font-bold">
+      <h3 class="text-center text-3xl font-bold" @click="onSlideChange">
         Tim Web<span class="text-yellow-600">GIS.</span>
       </h3>
-      <swiper :slidesPerView="4" class="my-16">
+      <swiper
+        :slidesPerView="4"
+        class="my-16"
+        :pagination="{
+          dynamicBullets: true,
+          clickable: true,
+          dynamicMainBullets: 3,
+        }"
+        :modules="[Pagination]"
+      >
+        <!-- :loop="true" -->
         <swiper-slide>
           <team-card
             name="Yasdil Lasoma"
@@ -147,6 +159,6 @@ import "swiper/css";
 <style>
 html {
   scroll-behavior: smooth;
-  scroll-padding: 80px;
+  scroll-padding: 8rem;
 }
 </style>
