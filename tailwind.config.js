@@ -16,10 +16,13 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: "8rem",
-      // screens: {
-      //   "2xl": "1400px",
-      // },
+      padding: {
+        DEFAULT: "2rem",
+        lg: "8rem",
+      },
+      screens: {
+        "2xl": "1400px",
+      },
     },
     extend: {
       colors: {
