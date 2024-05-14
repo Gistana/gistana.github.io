@@ -1,5 +1,6 @@
 <script setup>
 import { Button } from "@/components/ui/button";
+import { RouterLink } from "vue-router";
 </script>
 
 <template>
@@ -15,7 +16,7 @@ import { Button } from "@/components/ui/button";
           Website Sistem Informasi Geografis Desa Tangguh Bencana
         </p>
         <div class="flex gap-4">
-          <Button>Lihat Peta</Button>
+          <Button :as="RouterLink" to="/map">Lihat Peta</Button>
           <Button variant="outline">Kontak Darurat</Button>
         </div>
       </div>
