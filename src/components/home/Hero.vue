@@ -4,11 +4,11 @@ import { RouterLink } from "vue-router";
 </script>
 
 <template>
-  <section class="sm:mt-20">
+  <section>
     <div
-      class="container flex h-svh flex-col items-center justify-center sm:justify-between sm:gap-32"
+      class="container flex h-svh flex-col items-center justify-center lg:flex-row lg:justify-between lg:gap-32"
     >
-      <div class="flex flex-col gap-4 sm:flex-[2]">
+      <div class="flex flex-col gap-4 lg:flex-[2]">
         <h1 class="text-4xl font-bold">
           Web<span class="text-yellow-600">GIS.</span> Destana
         </h1>
@@ -21,7 +21,7 @@ import { RouterLink } from "vue-router";
         </div>
       </div>
       <img
-        class="w-4/5 object-contain sm:flex-[3]"
+        class="w-4/5 object-contain lg:flex-[3]"
         width="200"
         src="/img/heroimage.png"
         alt=""

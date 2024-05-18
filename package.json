@@ -15,6 +15,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-vue-next": "^0.378.0",
+    "oh-vue-icons": "^1.0.0-rc3",
     "radix-vue": "^1.7.3",
     "swiper": "^11.1.1",
     "tailwind-merge": "^2.3.0",

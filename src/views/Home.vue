@@ -1,6 +1,6 @@
 <script setup>
 import { Hero, Service, About, Teams } from "@/components/home";
-import { Navbar, NavLink, Footer } from "@/components";
+import { FloatingActionButton, Footer, Navbar, NavLink } from "@/components";
 </script>
 
 <template>
@@ -15,4 +15,6 @@ import { Navbar, NavLink, Footer } from "@/components";
   <About />
   <Teams />
   <Footer />
+
+  <floating-action-button href="#" icon="fa-arrow-up" />
 </template>

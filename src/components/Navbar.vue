@@ -12,7 +12,7 @@ const menuToggle = ref(false);
   />
 
   <label
-    class="fixed right-4 top-4 z-20 flex h-8 w-8 cursor-pointer flex-col justify-center peer-checked:first:*:rotate-45 peer-checked:last:*:-rotate-45 peer-checked:odd:*:translate-y-0 peer-checked:even:*:scale-x-0"
+    class="fixed right-4 top-4 z-20 flex h-8 w-8 cursor-pointer flex-col justify-center peer-checked:first:*:rotate-45 peer-checked:last:*:-rotate-45 peer-checked:odd:*:translate-y-0 peer-checked:even:*:scale-x-0 md:hidden"
     for="menu-toggle"
   >
     <span
@@ -27,14 +27,14 @@ const menuToggle = ref(false);
   </label>
 
   <nav
-    class="sm:shadow-default fixed left-0 right-0 top-0 z-10 h-svh -translate-y-full bg-white py-5 transition peer-checked:translate-y-0"
+    class="sm:shadow-default fixed left-0 right-0 top-0 z-10 h-svh -translate-y-1/3 bg-white py-2 opacity-0 transition duration-300 peer-checked:translate-y-0 peer-checked:opacity-100 md:h-auto md:translate-y-0 md:opacity-100"
   >
     <div class="container mx-auto flex h-full items-center justify-between">
-      <a href="" class="hidden text-3xl font-bold">
+      <a href="#" class="hidden text-3xl font-bold md:inline">
         Web<span class="text-yellow-600">GIS.</span>
       </a>
       <ul
-        class="flex h-full w-full list-none flex-col items-center justify-center text-3xl font-bold"
+        class="flex h-full w-full list-none flex-col items-center justify-center text-3xl font-bold md:flex-row md:justify-end md:text-base md:font-normal"
         @click="menuToggle.checked = false"
       >
         <slot />

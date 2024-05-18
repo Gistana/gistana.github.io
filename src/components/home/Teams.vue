@@ -16,11 +16,16 @@ import Teams from "../../../src/data/teams.json";
       <swiper
         class="my-16"
         :slidesPerView="1"
-        :loop="true"
-        :autoplay="{
-          delay: 100,
-          disableOnInteraction: false,
+        :breakpoints="{
+          768: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 4,
+          },
         }"
+        :loop="true"
+        :autoplay="true"
         :pagination="{
           dynamicBullets: true,
           clickable: true,
@@ -28,6 +33,14 @@ import Teams from "../../../src/data/teams.json";
         }"
         :modules="[Pagination]"
       >
+        <swiper-slide>
+          <team-card
+            name="Tri Putra Fauzan H. Radji"
+            role="Front End Dev"
+            image="fauzan.png"
+            link="https://www.linkedin.com/in/tri-putra-fauzan-h-radji-404810257/"
+          />
+        </swiper-slide>
         <swiper-slide>
           <team-card
             name="Yasdil Lasoma"
@@ -45,37 +58,41 @@ import Teams from "../../../src/data/teams.json";
         </swiper-slide>
         <swiper-slide>
           <team-card
-            name="Tri Putra Fauzan H. Radji"
-            role="Front End Dev"
-            image="fauzan.png"
-            link="https://www.linkedin.com/in/tri-putra-fauzan-h-radji-404810257/"
-          />
-        </swiper-slide>
-        <swiper-slide>
-          <team-card
             name="Dhani Ardiyanto Syahdila"
             role="Fullstack Dev"
             image="dani.png"
           />
         </swiper-slide>
         <swiper-slide>
+          <team-card name="Mersita Tamrin" role="Copywriter" image="sita.png" />
+        </swiper-slide>
+        <swiper-slide>
           <team-card
-            name="Mersita Tamrin"
-            role="Copywriter"
-            image="sita.png"
+            name="Nanda Eka Cahya Utama"
+            role="UI/UX Designer"
+            image="anan.png"
           />
         </swiper-slide>
         <swiper-slide>
-          <team-card name="Nanda Eka Cahya Utama" role="UI/UX Designer" image="anan.png" />
+          <team-card
+            name="Moh Aqshal Safatullah Ibrahim"
+            role="Backend Dev"
+            image="aqshal.png"
+          />
         </swiper-slide>
         <swiper-slide>
-          <team-card name="Moh Aqshal Safatullah Ibrahim" role="Backend Dev" image="aqshal.png" />
+          <team-card
+            name="Jessica Thiony Rura Koyansow"
+            role="Copywriter"
+            image="jes.png"
+          />
         </swiper-slide>
         <swiper-slide>
-          <team-card name="Jessica Thiony Rura Koyansow" role="Copywriter" image="jes.png" />
-        </swiper-slide>
-        <swiper-slide>
-          <team-card name="Putra Anshori Arta Amuda" role="Copywriter & Marketing" image="uta.png" />
+          <team-card
+            name="Putra Anshori Arta Amuda"
+            role="Copywriter & Marketing"
+            image="uta.png"
+          />
         </swiper-slide>
       </swiper>
     </div>
