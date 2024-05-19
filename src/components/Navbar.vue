@@ -27,7 +27,7 @@ const menuToggle = ref(false);
   </label>
 
   <nav
-    class="sm:shadow-default fixed left-0 right-0 top-0 z-10 h-svh -translate-y-1/3 bg-white py-2 opacity-0 transition duration-300 peer-checked:translate-y-0 peer-checked:opacity-100 md:h-auto md:translate-y-0 md:opacity-100"
+    class="md:shadow-default pointer-events-none fixed left-0 right-0 top-0 z-10 h-svh -translate-y-1/3 bg-white py-2 opacity-0 transition duration-300 peer-checked:pointer-events-auto peer-checked:translate-y-0 peer-checked:opacity-100 md:pointer-events-auto md:h-auto md:translate-y-0 md:opacity-100"
   >
     <div class="container mx-auto flex h-full items-center justify-between">
       <a href="#" class="hidden text-3xl font-bold md:inline">
