@@ -1,5 +1,5 @@
 import { Home, Map } from "./views";
-import { createMemoryHistory, createRouter } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   { path: "/", component: Home },
@@ -8,6 +8,6 @@ const routes = [
 
 export default createRouter({
   mode: "history",
-  history: createMemoryHistory(),
+  history: createWebHistory(),
   routes,
 });

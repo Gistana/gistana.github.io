@@ -3,27 +3,30 @@ import { TopBar } from "@/components";
 import {
   LMap,
   LTileLayer,
-  LMarker,
   LControlLayers,
+  LMarker,
   LGeoJson,
+  LLayerGroup,
 } from "@vue-leaflet/vue-leaflet";
 import "leaflet/dist/leaflet.css";
 
-import administrasi from "../data/administrasi.json";
+import { administrasi, jalurEvakuasi } from "../data";
 
 export default {
   components: {
     TopBar,
     LMap,
     LTileLayer,
-    LMarker,
     LControlLayers,
+    LMarker,
     LGeoJson,
+    LLayerGroup,
   },
   data() {
     return {
-      center: [0.7569440156221701, 122.61520767212],
-      geojson: administrasi,
+      center: [0.36694401562217005, 123.29020767212],
+      administrasi,
+      jalurEvakuasi,
     };
   },
 };
@@ -39,11 +42,7 @@ export default {
       </h1>
     </top-bar>
 
-    <l-map
-      :center="[0.7569440156221701, 122.61520767212]"
-      :use-global-leaflet="false"
-      :zoom="10"
-    >
+    <l-map :center="center" :use-global-leaflet="false" :zoom="12">
       <l-control-layers position="topright" />
 
       <l-tile-layer
@@ -51,17 +50,34 @@ export default {
         layer-type="base"
         name="OpenStreetMap"
       />
+
       <l-tile-layer
         url="https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.jpg"
         layer-type="base"
         name="Satellite View"
         :visible="false"
       />
+
       <l-geo-json
-        :geojson="geojson"
+        :geojson="administrasi"
         layer-type="overlay"
-        name="Batas Administrasi"
+        name="Kecamatan Bulawa"
+        :optionsStyle="() => ({ color: '#000000' })"
       />
+
+      <l-layer-group layer-type="overlay" name="Jalur Evakuasi">
+        <l-geo-json
+          :geojson="jalurEvakuasi"
+          :optionsStyle="() => ({ color: '#ffff00' })"
+        />
+        <l-marker
+          :lat-lng="
+            jalurEvakuasi.features[0].geometry.coordinates[0]
+              .slice(0, 2)
+              .toReversed()
+          "
+        />
+      </l-layer-group>
     </l-map>
   </div>
 </template>
