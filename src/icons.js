@@ -1,1 +1,7 @@
-export { FaArrowLeft, FaArrowUp, FaIdCardAlt, FaMap } from "oh-vue-icons/icons";
+export {
+  FaArrowLeft,
+  FaArrowUp,
+  FaIdCardAlt,
+  FaMap,
+  MdLocationsearchingTwotone,
+} from "oh-vue-icons/icons";
