@@ -1,3 +1,7 @@
+<script setup>
+import { Vue3Lottie } from "vue3-lottie";
+import { service } from "../../data";
+</script>
 <template>
   <section id="layanan" class="mt-16 flex flex-col gap-8 sm:gap-16">
     <h3 class="text-center text-3xl font-bold">Layanan</h3>
@@ -5,10 +9,9 @@
     <div
       class="container flex flex-col gap-x-20 gap-y-20 md:w-10/12 lg:w-auto lg:flex-row"
     >
-      <img
+      <Vue3Lottie
         class="hidden flex-1 object-contain md:block lg:w-1/2"
-        src="/img/layanan.png"
-        alt="Layanan"
+        :animationData="service"
       />
       <div class="flex flex-1 flex-col gap-6 md:mx-8 lg:mx-0">
         <div

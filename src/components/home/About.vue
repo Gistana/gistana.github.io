@@ -1,3 +1,7 @@
+<script setup>
+import { Vue3Lottie } from "vue3-lottie";
+import { about } from "../../data";
+</script>
 <template>
   <section id="tentang" class="my-32">
     <div class="container flex flex-col gap-y-8 md:w-9/12 lg:w-auto lg:gap-y-0">
@@ -9,10 +13,10 @@
           strategis. Dengan navigasi yang intuitif sehinnga dapat dengan mudah
           menemukan rute tercepat dan teraman.
         </p>
-        <img
+
+        <Vue3Lottie
           class="hidden w-1/2 flex-1 md:block"
-          src="/img/tentang.png"
-          alt="Layanan"
+          :animationData="about"
         />
       </div>
     </div>
