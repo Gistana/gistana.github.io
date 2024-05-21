@@ -1,9 +1,9 @@
 <script setup>
 import { Vue3Lottie } from "vue3-lottie";
-import { service } from "../../data";
+import { service } from "@/data";
 </script>
 <template>
-  <section id="layanan" class="mt-16 flex flex-col gap-8 sm:gap-16">
+  <section class="flex flex-auto flex-col justify-center gap-8 sm:gap-16">
     <h3 class="text-center text-3xl font-bold">Layanan</h3>
 
     <div

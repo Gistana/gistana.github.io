@@ -29,12 +29,14 @@ const menuToggle = ref(false);
   <nav
     class="md:shadow-default pointer-events-none fixed left-0 right-0 top-0 z-10 h-svh -translate-y-1/3 bg-white py-2 opacity-0 transition duration-300 peer-checked:pointer-events-auto peer-checked:translate-y-0 peer-checked:opacity-100 md:pointer-events-auto md:h-auto md:translate-y-0 md:opacity-100"
   >
-    <div class="container mx-auto flex h-full items-center justify-between">
-      <a href="#" class="hidden text-3xl font-bold md:inline">
+    <div
+      class="container mx-auto flex h-full flex-col items-center justify-center md:flex-row md:justify-between"
+    >
+      <router-link to="/" class="py-4 text-3xl font-bold">
         Web<span class="text-yellow-600">GIS.</span>
-      </a>
+      </router-link>
       <ul
-        class="flex h-full w-full list-none flex-col items-center justify-center text-3xl font-bold md:flex-row md:justify-end md:text-base md:font-normal"
+        class="flex w-full list-none flex-col items-center justify-center text-3xl font-bold md:h-full md:flex-row md:justify-end md:text-base md:font-normal"
         @click="menuToggle.checked = false"
       >
         <slot />

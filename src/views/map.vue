@@ -68,7 +68,13 @@ export default {
       </h1>
     </top-bar>
 
-    <l-map :center="center" :use-global-leaflet="false" :zoom="12" ref="map">
+    <l-map
+      :center="center"
+      :use-global-leaflet="false"
+      :zoom="12"
+      :min-zoom="12"
+      ref="map"
+    >
       <l-control-layers position="topright" />
 
       <l-control position="topleft" class="leaflet-control leaflet-bar">
