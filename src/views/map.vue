@@ -13,7 +13,17 @@ import {
 } from "@vue-leaflet/vue-leaflet";
 import "leaflet/dist/leaflet.css";
 
-import { administrasi, jalurEvakuasi } from "../data";
+import {
+  administrasi,
+  jalurEvakuasiMamungaaTimur,
+  jalurEvakuasiPatoa,
+  jalurEvakuasiKaidundu,
+  jalurEvakuasiBukitHijau,
+  titikKumpulMamungaaTimur,
+  titikKumpulPatoa,
+  titikKumpulKaidundu,
+  titikKumpulBukitHijau,
+} from "@/data";
 
 export default {
   components: {
@@ -33,8 +43,27 @@ export default {
     return {
       center: [0.36694401562217005, 123.29020767212],
       administrasi,
-      jalurEvakuasi,
       currentLocation: null,
+
+      jalurEvakuasiMamungaaTimur,
+      titikKumpulMamungaaTimur,
+      showJalurEvakuasiMamungaaTimur: true,
+      showTitikKumpulMamungaaTimur: true,
+
+      jalurEvakuasiPatoa,
+      titikKumpulPatoa,
+      showJalurEvakuasiPatoa: true,
+      showTitikKumpulPatoa: true,
+
+      jalurEvakuasiKaidundu,
+      titikKumpulKaidundu,
+      showJalurEvakuasiKaidundu: true,
+      showTitikKumpulKaidundu: true,
+
+      jalurEvakuasiBukitHijau,
+      titikKumpulBukitHijau,
+      showJalurEvakuasiBukitHijau: true,
+      showTitikKumpulBukitHijau: true,
     };
   },
 
@@ -55,6 +84,13 @@ export default {
         this.$refs.map.leafletObject.setView(this.currentLocation, 15);
       }
     },
+    separateFeatures(geoJSON) {
+      return geoJSON.features.map((feature) => ({
+        ...geoJSON,
+        name: feature.properties.NAMOBJ,
+        features: [feature],
+      }));
+    },
   },
 };
 </script>
@@ -62,7 +98,6 @@ export default {
 <template>
   <div class="flex h-svh flex-row">
     <sidebar>
-      <!-- Mamungaa Timur -->
       <div class="flex flex-col gap-2">
         <h3 class="font-bold">Desa Mamungaa Timur</h3>
         <div class="flex flex-col">
@@ -70,16 +105,17 @@ export default {
             icon="titik-kumpul"
             label="Titik Kumpul"
             id="titik-kumpul-mamungaa-timur"
+            v-model="showTitikKumpulMamungaaTimur"
           />
           <checkbox
             icon="jalur-evakuasi"
             label="Jalur Evakuasi"
             id="jalur-evakuasi-mamungaa-timur"
+            v-model="showJalurEvakuasiMamungaaTimur"
           />
         </div>
       </div>
 
-      <!-- Patoa -->
       <div class="flex flex-col gap-2">
         <h3 class="font-bold">Desa Patoa</h3>
         <div class="flex flex-col">
@@ -87,16 +123,17 @@ export default {
             icon="titik-kumpul"
             label="Titik Kumpul"
             id="titik-kumpul-patoa"
+            v-model="showTitikKumpulPatoa"
           />
           <checkbox
             icon="jalur-evakuasi"
             label="Jalur Evakuasi"
             id="jalur-evakuasi-patoa"
+            v-model="showJalurEvakuasiPatoa"
           />
         </div>
       </div>
 
-      <!-- Kaidundu -->
       <div class="flex flex-col gap-2">
         <h3 class="font-bold">Desa Kaidundu</h3>
         <div class="flex flex-col">
@@ -104,16 +141,17 @@ export default {
             icon="titik-kumpul"
             label="Titik Kumpul"
             id="titik-kumpul-kaidundu"
+            v-model="showTitikKumpulKaidundu"
           />
           <checkbox
             icon="jalur-evakuasi"
             label="Jalur Evakuasi"
             id="jalur-evakuasi-kaidundu"
+            v-model="showJalurEvakuasiKaidundu"
           />
         </div>
       </div>
 
-      <!-- Bukit Hijau -->
       <div class="flex flex-col gap-2">
         <h3 class="font-bold">Desa Bukit Hijau</h3>
         <div class="flex flex-col">
@@ -121,11 +159,13 @@ export default {
             icon="titik-kumpul"
             label="Titik Kumpul"
             id="titik-kumpul-bukit-hijau"
+            v-model="showTitikKumpulBukitHijau"
           />
           <checkbox
             icon="jalur-evakuasi"
             label="Jalur Evakuasi"
             id="jalur-evakuasi-bukit-hijau"
+            v-model="showJalurEvakuasiBukitHijau"
           />
         </div>
       </div>
@@ -177,25 +217,49 @@ export default {
       />
 
       <l-geo-json
-        :geojson="administrasi"
-        layer-type="overlay"
-        name="Kecamatan Bulawa"
+        v-for="geoJSON in separateFeatures(administrasi)"
+        :geojson="geoJSON"
+        :optionsStyle="() => ({ color: geoJSON.features[0].properties.COLOR })"
+      >
+        <l-tooltip>{{ geoJSON.name }}</l-tooltip>
+      </l-geo-json>
+
+      <l-geo-json
+        v-if="showJalurEvakuasiMamungaaTimur"
+        :geojson="jalurEvakuasiMamungaaTimur"
         :optionsStyle="() => ({ color: '#000000' })"
       />
+      <l-geo-json
+        v-if="showTitikKumpulMamungaaTimur"
+        :geojson="titikKumpulMamungaaTimur"
+      />
 
-      <l-layer-group layer-type="overlay" name="Jalur Evakuasi">
-        <l-geo-json
-          :geojson="jalurEvakuasi"
-          :optionsStyle="() => ({ color: '#ffff00' })"
-        />
-        <l-marker
-          :lat-lng="
-            jalurEvakuasi.features[0].geometry.coordinates[0]
-              .slice(0, 2)
-              .toReversed()
-          "
-        />
-      </l-layer-group>
+      <l-geo-json
+        v-if="showJalurEvakuasiPatoa"
+        :geojson="jalurEvakuasiPatoa"
+        :optionsStyle="() => ({ color: '#000000' })"
+      />
+      <l-geo-json v-if="showTitikKumpulPatoa" :geojson="titikKumpulPatoa" />
+
+      <l-geo-json
+        v-if="showJalurEvakuasiKaidundu"
+        :geojson="jalurEvakuasiKaidundu"
+        :optionsStyle="() => ({ color: '#000000' })"
+      />
+      <l-geo-json
+        v-if="showTitikKumpulKaidundu"
+        :geojson="titikKumpulKaidundu"
+      />
+
+      <l-geo-json
+        v-if="showJalurEvakuasiBukitHijau"
+        :geojson="jalurEvakuasiBukitHijau"
+        :optionsStyle="() => ({ color: '#000000' })"
+      />
+      <l-geo-json
+        v-if="showTitikKumpulBukitHijau"
+        :geojson="titikKumpulBukitHijau"
+      />
 
       <l-circle-marker v-if="currentLocation" :lat-lng="currentLocation">
         <l-tooltip>Anda di sini</l-tooltip>
