@@ -5,7 +5,7 @@
       <a href="https://github.com/gistana" class="text-cyan-800 underline"
         >Gistana Team</a
       >
-      &copy; Copyright 2024.
+      &copy; Copyright 2024 - Mahasiswa KKN MBKM
     </p>
   </footer>
 </template>
