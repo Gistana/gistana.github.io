@@ -1,8 +1,10 @@
 export {
   FaArrowLeft,
   FaArrowUp,
+  FaCheck,
+  FaChevronRight,
+  FaHome,
   FaIdCardAlt,
   FaMap,
-  FaHome,
   MdLocationsearchingTwotone,
 } from "oh-vue-icons/icons";

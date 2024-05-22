@@ -1,5 +1,5 @@
 <script>
-import { TopBar } from "@/components";
+import { Sidebar, Checkbox } from "@/components";
 import {
   LMap,
   LTileLayer,
@@ -17,7 +17,8 @@ import { administrasi, jalurEvakuasi } from "../data";
 
 export default {
   components: {
-    TopBar,
+    Checkbox,
+    Sidebar,
     LMap,
     LTileLayer,
     LControlLayers,
@@ -59,16 +60,79 @@ export default {
 </script>
 
 <template>
-  <div class="flex h-svh flex-col">
-    <top-bar leadingIcon="fa-arrow-left">
-      <h1
-        class="flex h-full items-center justify-center text-center text-lg font-bold"
-      >
-        Maps Web<span class="text-yellow-600">GIS.</span>
-      </h1>
-    </top-bar>
+  <div class="flex h-svh flex-row">
+    <sidebar>
+      <!-- Mamungaa Timur -->
+      <div class="flex flex-col gap-2">
+        <h3 class="font-bold">Desa Mamungaa Timur</h3>
+        <div class="flex flex-col">
+          <checkbox
+            icon="titik-kumpul"
+            label="Titik Kumpul"
+            id="titik-kumpul-mamungaa-timur"
+          />
+          <checkbox
+            icon="jalur-evakuasi"
+            label="Jalur Evakuasi"
+            id="jalur-evakuasi-mamungaa-timur"
+          />
+        </div>
+      </div>
+
+      <!-- Patoa -->
+      <div class="flex flex-col gap-2">
+        <h3 class="font-bold">Desa Patoa</h3>
+        <div class="flex flex-col">
+          <checkbox
+            icon="titik-kumpul"
+            label="Titik Kumpul"
+            id="titik-kumpul-patoa"
+          />
+          <checkbox
+            icon="jalur-evakuasi"
+            label="Jalur Evakuasi"
+            id="jalur-evakuasi-patoa"
+          />
+        </div>
+      </div>
+
+      <!-- Kaidundu -->
+      <div class="flex flex-col gap-2">
+        <h3 class="font-bold">Desa Kaidundu</h3>
+        <div class="flex flex-col">
+          <checkbox
+            icon="titik-kumpul"
+            label="Titik Kumpul"
+            id="titik-kumpul-kaidundu"
+          />
+          <checkbox
+            icon="jalur-evakuasi"
+            label="Jalur Evakuasi"
+            id="jalur-evakuasi-kaidundu"
+          />
+        </div>
+      </div>
+
+      <!-- Bukit Hijau -->
+      <div class="flex flex-col gap-2">
+        <h3 class="font-bold">Desa Bukit Hijau</h3>
+        <div class="flex flex-col">
+          <checkbox
+            icon="titik-kumpul"
+            label="Titik Kumpul"
+            id="titik-kumpul-bukit-hijau"
+          />
+          <checkbox
+            icon="jalur-evakuasi"
+            label="Jalur Evakuasi"
+            id="jalur-evakuasi-bukit-hijau"
+          />
+        </div>
+      </div>
+    </sidebar>
 
     <l-map
+      class="isolate ms-3"
       :center="center"
       :use-global-leaflet="false"
       :zoom="12"
