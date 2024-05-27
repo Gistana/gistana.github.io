@@ -6,5 +6,6 @@ export {
   FaHome,
   FaIdCardAlt,
   FaMap,
+  FaTimes,
   MdLocationsearchingTwotone,
 } from "oh-vue-icons/icons";
