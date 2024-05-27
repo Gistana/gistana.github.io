@@ -115,7 +115,7 @@ export default {
 
 <template>
   <div
-    v-if="modal"
+    v-show="modal"
     class="fixed bottom-8 right-4 z-10 w-[calc(100vw-6rem)] max-w-96 rounded-lg bg-white p-4 shadow-lg"
   >
     <button
@@ -125,11 +125,13 @@ export default {
       <v-icon name="fa-times" scale="0.8" />
     </button>
     <img
-      :src="`/img${dataModal.image}`"
+      :src="`/img${dataModal?.image}`"
       :alt="dataModal?.name"
       class="aspect-video w-full rounded bg-slate-300 object-cover"
     />
-    <h5 class="mb-1 mt-4 font-bold">{{ dataModal?.name }}</h5>
+    <h5 class="mb-1 mt-4 font-bold uppercase text-yellow-600">
+      {{ dataModal?.name }}
+    </h5>
     <p class="text-sm">
       {{ dataModal?.description }}
     </p>
