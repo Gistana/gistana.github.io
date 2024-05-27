@@ -125,9 +125,9 @@ export default {
       <v-icon name="fa-times" scale="0.8" />
     </button>
     <img
-      :href="dataModal?.image"
+      :src="`/img${dataModal.image}`"
       :alt="dataModal?.name"
-      class="aspect-video w-full rounded bg-slate-300"
+      class="aspect-video w-full rounded bg-slate-300 object-cover"
     />
     <h5 class="mb-1 mt-4 font-bold">{{ dataModal?.name }}</h5>
     <p class="text-sm">
@@ -137,6 +137,37 @@ export default {
 
   <div class="flex h-svh flex-row">
     <sidebar>
+      <form class="relative">
+        <input
+          type="text"
+          placeholder="Cari lokasi"
+          size="1"
+          class="peer h-11 w-full min-w-28 rounded-md border border-black/25 px-4 outline-none focus:border-yellow-600"
+        />
+        <ul
+          class="absolute top-[calc(100%+0.25rem)] hidden w-full overflow-x-hidden text-ellipsis text-nowrap rounded-md border border-black/10 bg-white text-sm shadow-md peer-focus:block"
+        >
+          <li
+            class="cursor-pointer overflow-x-hidden text-ellipsis border-t border-black/10 px-4 py-2 first:border-none hover:bg-gray-100"
+            title="Titik Kumpul Desa Mamungaa Timur"
+          >
+            Titik Kumpul Mamungaa Timur
+          </li>
+          <li
+            class="cursor-pointer overflow-x-hidden text-ellipsis border-t border-black/10 px-4 py-2 first:border-none hover:bg-gray-100"
+            title="Titik Kumpul Desa Mamungaa Timur"
+          >
+            Titik Kumpul Patoa
+          </li>
+          <li
+            class="cursor-pointer overflow-x-hidden text-ellipsis border-t border-black/10 px-4 py-2 first:border-none hover:bg-gray-100"
+            title="Titik Kumpul Desa Mamungaa Timur"
+          >
+            Titik Kumpul Kaidundu
+          </li>
+        </ul>
+      </form>
+
       <div class="flex flex-col gap-2">
         <h3 class="font-bold">Desa Mamungaa Timur</h3>
         <div class="flex flex-col">

@@ -39,7 +39,9 @@
         </label>
       </div>
 
-      <div class="flex flex-auto flex-col gap-8 overflow-auto py-8 pe-8 ps-4">
+      <div
+        class="flex flex-auto flex-col gap-8 overflow-auto pb-8 pe-8 ps-4 pt-4"
+      >
         <slot />
       </div>
     </div>
