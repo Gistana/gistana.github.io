@@ -40,7 +40,7 @@
   {
     "id": 7,
     "name": "Moh Aqshal Safatullah Ibrahim",
-    "role": "Backend Dev",
+    "role": "Copywriter",
     "image": "aqshal.png"
   },
   {
@@ -52,7 +52,13 @@
   {
     "id": 9,
     "name": "Putra Anshori Arta Amuda",
-    "role": "Copywriter & Marketing",
+    "role": "Copywriter",
     "image": "uta.png"
+  },
+  {
+    "id": 10,
+    "name": "Abdul Akram",
+    "role": "Copywriter",
+    "image": "akram.png"
   }
 ]
