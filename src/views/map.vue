@@ -13,6 +13,8 @@ import {
 } from "@vue-leaflet/vue-leaflet";
 import "leaflet/dist/leaflet.css";
 
+import { icon, marker } from "leaflet";
+
 import {
   administrasi,
   jalurEvakuasiMamungaaTimur,
@@ -43,7 +45,7 @@ export default {
   },
   data() {
     return {
-      center: [0.3702477, 123.2836842],
+      center: [0.3602477, 123.2536842],
       administrasi,
       currentLocation: null,
       dataModal: null,
@@ -51,6 +53,8 @@ export default {
       points: [],
       searchQuery: "",
       filteredPoints: [],
+      markerTitikKumpul: {},
+      markerTitikRawan: {},
 
       jalurEvakuasiMamungaaTimur,
       titikKumpulMamungaaTimur,
@@ -76,6 +80,27 @@ export default {
       showJalurEvakuasiBukitHijau: true,
       showTitikKumpulBukitHijau: true,
     };
+  },
+
+  async beforeMount() {
+    const { icon, marker } = await import("leaflet/dist/leaflet-src.esm");
+    this.markerTitikKumpul.pointToLayer = (feature, latLng) =>
+      marker(latLng, {
+        icon: icon({
+          iconUrl: "/icon/tikum.svg",
+          iconSize: [32, 32],
+          iconAnchor: [15, 32],
+        }),
+      });
+
+    this.markerTitikRawan.pointToLayer = (feature, latLng) =>
+      marker(latLng, {
+        icon: icon({
+          iconUrl: "/icon/tiran.svg",
+          iconSize: [32, 32],
+          iconAnchor: [15, 32],
+        }),
+      });
   },
 
   mounted() {
@@ -345,7 +370,7 @@ export default {
       <l-geo-json
         v-for="geoJSON in separateFeatures(administrasi)"
         :geojson="geoJSON"
-        :optionsStyle="() => ({ color: geoJSON.features[0].properties.COLOR })"
+        :options-style="() => ({ color: geoJSON.features[0].properties.COLOR })"
       >
         <l-tooltip>{{ geoJSON.name }}</l-tooltip>
       </l-geo-json>
@@ -360,6 +385,7 @@ export default {
         v-if="showTitikKumpulBukitHijau"
         :geojson="titikKumpulBukitHijau"
         @click="showModal"
+        :options="markerTitikKumpul"
       />
 
       <l-geo-json
@@ -372,11 +398,13 @@ export default {
         v-if="showTitikKumpulKaidundu"
         :geojson="titikKumpulKaidundu"
         @click="showModal"
+        :options="markerTitikKumpul"
       />
       <l-geo-json
         v-if="showTitikRawanKaidundu"
         :geojson="titikRawanKaidundu"
         @click="showModal"
+        :options="markerTitikRawan"
       />
 
       <l-geo-json
@@ -389,6 +417,7 @@ export default {
         v-if="showTitikKumpulPatoa"
         :geojson="titikKumpulPatoa"
         @click="showModal"
+        :options="markerTitikKumpul"
       />
 
       <l-geo-json
@@ -401,11 +430,13 @@ export default {
         v-if="showTitikKumpulMamungaaTimur"
         :geojson="titikKumpulMamungaaTimur"
         @click="showModal"
+        :options="markerTitikKumpul"
       />
       <l-geo-json
         v-if="showTitikRawanMamungaaTimur"
         :geojson="titikRawanMamungaaTimur"
         @click="showModal"
+        :options="markerTitikRawan"
       />
 
       <l-circle-marker v-if="currentLocation" :lat-lng="currentLocation">

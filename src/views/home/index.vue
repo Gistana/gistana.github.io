@@ -38,10 +38,10 @@ import { RouterLink } from "vue-router";
           </p>
           <div class="flex gap-4">
             <Button :as="RouterLink" to="map">Lihat Peta</Button>
-            <!-- <Button
+            <Button
               class="border border-black bg-landingcolor text-black hover:text-white"
               >Nomor Kecamatan</Button
-            > -->
+            >
           </div>
         </div>
         <img
