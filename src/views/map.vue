@@ -23,6 +23,8 @@ import {
   titikKumpulPatoa,
   titikKumpulKaidundu,
   titikKumpulBukitHijau,
+  titikRawanKaidundu,
+  titikRawanMamungaaTimur,
 } from "@/data";
 
 export default {
@@ -49,8 +51,10 @@ export default {
 
       jalurEvakuasiMamungaaTimur,
       titikKumpulMamungaaTimur,
+      titikRawanMamungaaTimur,
       showJalurEvakuasiMamungaaTimur: true,
       showTitikKumpulMamungaaTimur: true,
+      showTitikRawanMamungaaTimur: true,
 
       jalurEvakuasiPatoa,
       titikKumpulPatoa,
@@ -59,8 +63,10 @@ export default {
 
       jalurEvakuasiKaidundu,
       titikKumpulKaidundu,
+      titikRawanKaidundu,
       showJalurEvakuasiKaidundu: true,
       showTitikKumpulKaidundu: true,
+      showTitikRawanKaidundu: true,
 
       jalurEvakuasiBukitHijau,
       titikKumpulBukitHijau,
@@ -171,19 +177,43 @@ export default {
       </form>
 
       <div class="flex flex-col gap-2">
-        <h3 class="font-bold">Desa Mamungaa Timur</h3>
+        <h3 class="font-bold">Desa Bukit Hijau</h3>
         <div class="flex flex-col">
           <checkbox
             icon="titik-kumpul"
             label="Titik Kumpul"
-            id="titik-kumpul-mamungaa-timur"
-            v-model="showTitikKumpulMamungaaTimur"
+            id="titik-kumpul-bukit-hijau"
+            v-model="showTitikKumpulBukitHijau"
           />
           <checkbox
             icon="jalur-evakuasi"
             label="Jalur Evakuasi"
-            id="jalur-evakuasi-mamungaa-timur"
-            v-model="showJalurEvakuasiMamungaaTimur"
+            id="jalur-evakuasi-bukit-hijau"
+            v-model="showJalurEvakuasiBukitHijau"
+          />
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <h3 class="font-bold">Desa Kaidundu</h3>
+        <div class="flex flex-col">
+          <checkbox
+            icon="titik-kumpul"
+            label="Titik Kumpul"
+            id="titik-kumpul-kaidundu"
+            v-model="showTitikKumpulKaidundu"
+          />
+          <checkbox
+            icon="jalur-evakuasi"
+            label="Jalur Evakuasi"
+            id="jalur-evakuasi-kaidundu"
+            v-model="showJalurEvakuasiKaidundu"
+          />
+          <checkbox
+            icon="titik-rawan"
+            label="Titik Rawan"
+            id="titik-rawan-kaidundu"
+            v-model="showTitikRawanKaidundu"
           />
         </div>
       </div>
@@ -207,37 +237,25 @@ export default {
       </div>
 
       <div class="flex flex-col gap-2">
-        <h3 class="font-bold">Desa Kaidundu</h3>
+        <h3 class="font-bold">Desa Mamungaa Timur</h3>
         <div class="flex flex-col">
           <checkbox
             icon="titik-kumpul"
             label="Titik Kumpul"
-            id="titik-kumpul-kaidundu"
-            v-model="showTitikKumpulKaidundu"
+            id="titik-kumpul-mamungaa-timur"
+            v-model="showTitikKumpulMamungaaTimur"
           />
           <checkbox
             icon="jalur-evakuasi"
             label="Jalur Evakuasi"
-            id="jalur-evakuasi-kaidundu"
-            v-model="showJalurEvakuasiKaidundu"
-          />
-        </div>
-      </div>
-
-      <div class="flex flex-col gap-2">
-        <h3 class="font-bold">Desa Bukit Hijau</h3>
-        <div class="flex flex-col">
-          <checkbox
-            icon="titik-kumpul"
-            label="Titik Kumpul"
-            id="titik-kumpul-bukit-hijau"
-            v-model="showTitikKumpulBukitHijau"
+            id="jalur-evakuasi-mamungaa-timur"
+            v-model="showJalurEvakuasiMamungaaTimur"
           />
           <checkbox
-            icon="jalur-evakuasi"
-            label="Jalur Evakuasi"
-            id="jalur-evakuasi-bukit-hijau"
-            v-model="showJalurEvakuasiBukitHijau"
+            icon="titik-rawan"
+            label="Titik Rawan"
+            id="titik-rawan-mamungaa-timur"
+            v-model="showTitikRawanMamungaaTimur"
           />
         </div>
       </div>
@@ -278,14 +296,24 @@ export default {
       <l-tile-layer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         layer-type="base"
-        name="OpenStreetMap"
+        name="Default"
+        attribution="<a href='https://www.openstreetmap.org/copyright' target='_blank'>&copy; OpenStreetMap</a> | <a href='https://stadiamaps.com/' target='_blank'>&copy; Stadia Maps</a>"
       />
 
       <l-tile-layer
         url="https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.jpg"
         layer-type="base"
-        name="Satellite View"
+        name="Citra Satelit"
         :visible="false"
+        attribution="<a href='https://stadiamaps.com/' target='_blank'>&copy; Stadia Maps</a>"
+      />
+
+      <l-tile-layer
+        url="https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.png"
+        layer-type="base"
+        name="Medan"
+        :visible="false"
+        attribution="<a href='https://stadiamaps.com/' target='_blank'>&copy; Stadia Maps</a> | <a href='https://stamen.com' target='_blank'>© Stamen Design</a>"
       />
 
       <l-geo-json
@@ -297,14 +325,31 @@ export default {
       </l-geo-json>
 
       <l-geo-json
-        v-if="showJalurEvakuasiMamungaaTimur"
-        :geojson="jalurEvakuasiMamungaaTimur"
+        v-if="showJalurEvakuasiBukitHijau"
+        :geojson="jalurEvakuasiBukitHijau"
         :optionsStyle="() => ({ color: '#000000' })"
         @click="showModal"
       />
       <l-geo-json
-        v-if="showTitikKumpulMamungaaTimur"
-        :geojson="titikKumpulMamungaaTimur"
+        v-if="showTitikKumpulBukitHijau"
+        :geojson="titikKumpulBukitHijau"
+        @click="showModal"
+      />
+
+      <l-geo-json
+        v-if="showJalurEvakuasiKaidundu"
+        :geojson="jalurEvakuasiKaidundu"
+        :optionsStyle="() => ({ color: '#000000' })"
+        @click="showModal"
+      />
+      <l-geo-json
+        v-if="showTitikKumpulKaidundu"
+        :geojson="titikKumpulKaidundu"
+        @click="showModal"
+      />
+      <l-geo-json
+        v-if="showTitikRawanKaidundu"
+        :geojson="titikRawanKaidundu"
         @click="showModal"
       />
 
@@ -321,26 +366,19 @@ export default {
       />
 
       <l-geo-json
-        v-if="showJalurEvakuasiKaidundu"
-        :geojson="jalurEvakuasiKaidundu"
+        v-if="showJalurEvakuasiMamungaaTimur"
+        :geojson="jalurEvakuasiMamungaaTimur"
         :optionsStyle="() => ({ color: '#000000' })"
         @click="showModal"
       />
       <l-geo-json
-        v-if="showTitikKumpulKaidundu"
-        :geojson="titikKumpulKaidundu"
-        @click="showModal"
-      />
-
-      <l-geo-json
-        v-if="showJalurEvakuasiBukitHijau"
-        :geojson="jalurEvakuasiBukitHijau"
-        :optionsStyle="() => ({ color: '#000000' })"
+        v-if="showTitikKumpulMamungaaTimur"
+        :geojson="titikKumpulMamungaaTimur"
         @click="showModal"
       />
       <l-geo-json
-        v-if="showTitikKumpulBukitHijau"
-        :geojson="titikKumpulBukitHijau"
+        v-if="showTitikRawanMamungaaTimur"
+        :geojson="titikRawanMamungaaTimur"
         @click="showModal"
       />
 

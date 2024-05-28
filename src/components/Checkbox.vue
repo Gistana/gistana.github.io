@@ -1,5 +1,5 @@
 <script setup>
-import { TitikKumpul, JalurEvakuasi } from "@/components/icons";
+import { TitikKumpul, JalurEvakuasi, TitikRawan } from "@/components/icons";
 defineProps(["label", "icon", "id"]);
 const checked = defineModel(false);
 </script>
@@ -26,6 +26,10 @@ const checked = defineModel(false);
       />
       <JalurEvakuasi
         v-if="icon === 'jalur-evakuasi'"
+        class="h-4 w-4 text-yellow-600"
+      />
+      <TitikRawan
+        v-if="icon === 'titik-rawan'"
         class="h-4 w-4 text-yellow-600"
       />
       {{ label }}
