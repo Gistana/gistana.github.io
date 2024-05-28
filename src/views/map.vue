@@ -48,6 +48,9 @@ export default {
       currentLocation: null,
       dataModal: null,
       modal: false,
+      points: [],
+      searchQuery: "",
+      filteredPoints: [],
 
       jalurEvakuasiMamungaaTimur,
       titikKumpulMamungaaTimur,
@@ -76,6 +79,24 @@ export default {
   },
 
   mounted() {
+    this.points = [
+      { geoJSON: this.titikKumpulMamungaaTimur, desa: "Mamungaa Timur" },
+      { geoJSON: this.titikRawanMamungaaTimur, desa: "Mamungaa Timur" },
+      { geoJSON: this.titikKumpulPatoa, desa: "Patoa" },
+      { geoJSON: this.titikKumpulKaidundu, desa: "Kaidundu" },
+      { geoJSON: this.titikRawanKaidundu, desa: "Kaidundu" },
+      { geoJSON: this.titikKumpulBukitHijau, desa: "Bukit Hijau" },
+    ]
+      .map(({ geoJSON, desa }) =>
+        geoJSON.features.map((feature) => ({
+          name: `${feature.properties.name} Desa ${desa}`,
+          coordinates: [...feature.geometry.coordinates],
+        })),
+      )
+      .flat();
+
+    this.filteredPoints = [...this.points].slice(0, 5);
+
     if (navigator.geolocation) {
       navigator.geolocation.watchPosition((position) => {
         this.currentLocation = [
@@ -115,6 +136,16 @@ export default {
       this.dataModal = [];
       this.modal = false;
     },
+    filterPoints() {
+      this.filteredPoints = this.points
+        .filter((point) =>
+          point.name.toLowerCase().includes(this.searchQuery.toLowerCase()),
+        )
+        .slice(0, 5);
+    },
+    gotoPoint(coordinates) {
+      this.$refs.map.leafletObject.setView(coordinates, 20);
+    },
   },
 };
 </script>
@@ -145,36 +176,30 @@ export default {
 
   <div class="flex h-svh flex-row">
     <sidebar>
-      <form class="relative">
+      <div class="relative">
         <input
+          v-model="searchQuery"
           type="text"
           placeholder="Cari lokasi"
           size="1"
           class="peer h-11 w-full min-w-28 rounded-md border border-black/25 px-4 outline-none focus:border-yellow-600"
+          @input="filterPoints"
+          required
         />
         <ul
-          class="absolute top-[calc(100%+0.25rem)] hidden w-full overflow-x-hidden text-ellipsis text-nowrap rounded-md border border-black/10 bg-white text-sm shadow-md peer-focus:block"
+          class="absolute top-[calc(100%+0.25rem)] hidden w-full overflow-x-hidden text-ellipsis text-nowrap rounded-md border border-black/10 bg-white text-sm shadow-md peer-valid:block"
         >
           <li
+            v-for="point in filteredPoints"
+            :key="point.name"
             class="cursor-pointer overflow-x-hidden text-ellipsis border-t border-black/10 px-4 py-2 first:border-none hover:bg-gray-100"
-            title="Titik Kumpul Desa Mamungaa Timur"
+            :title="point.name"
+            @click="gotoPoint(point.coordinates.slice(0, 2).toReversed())"
           >
-            Titik Kumpul Mamungaa Timur
-          </li>
-          <li
-            class="cursor-pointer overflow-x-hidden text-ellipsis border-t border-black/10 px-4 py-2 first:border-none hover:bg-gray-100"
-            title="Titik Kumpul Desa Mamungaa Timur"
-          >
-            Titik Kumpul Patoa
-          </li>
-          <li
-            class="cursor-pointer overflow-x-hidden text-ellipsis border-t border-black/10 px-4 py-2 first:border-none hover:bg-gray-100"
-            title="Titik Kumpul Desa Mamungaa Timur"
-          >
-            Titik Kumpul Kaidundu
+            {{ point.name }}
           </li>
         </ul>
-      </form>
+      </div>
 
       <div class="flex flex-col gap-2">
         <h3 class="font-bold">Desa Bukit Hijau</h3>
@@ -275,6 +300,15 @@ export default {
         position="topright"
         class="leaflet-control leaflet-control-layers"
       >
+        <button class="h-11 w-11 text-gray-400" @click="gotoMyLocation">
+          <v-icon name="md-locationsearching-twotone" scale="1.5" />
+        </button>
+      </l-control>
+
+      <l-control
+        position="topright"
+        class="leaflet-control leaflet-control-layers"
+      >
         <router-link to="/" class="flex h-11 w-11 items-center justify-center">
           <v-icon
             name="fa-home"
@@ -283,15 +317,6 @@ export default {
             style="vertical-align: middle"
           />
         </router-link>
-      </l-control>
-
-      <l-control
-        position="topright"
-        class="leaflet-control leaflet-control-layers"
-      >
-        <button class="h-11 w-11 text-gray-400" @click="gotoMyLocation">
-          <v-icon name="md-locationsearching-twotone" scale="1.5" />
-        </button>
       </l-control>
 
       <l-tile-layer
