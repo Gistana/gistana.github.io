@@ -39,6 +39,8 @@ import { RouterLink } from "vue-router";
           <div class="flex gap-4">
             <Button :as="RouterLink" to="map">Lihat Peta</Button>
             <Button
+              :as="RouterLink"
+              to="emergencycall"
               class="border border-black bg-landingcolor text-black hover:text-white"
               >Nomor Kecamatan</Button
             >

@@ -12,6 +12,7 @@ const routes = [
     ],
   },
   { name: "map", path: "/map", component: () => import("./views/map.vue") },
+  { name: "emergencycall", path: "/emergencycall", component: () => import("./views/emergencycall.vue") },
 ];
 
 export default createRouter({
