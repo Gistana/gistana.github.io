@@ -271,14 +271,15 @@ export default {
     >
       <l-control-layers position="topright" />
 
-      <l-control position="topleft" class="leaflet-control leaflet-bar">
-        <router-link
-          to="/"
-          class="flex h-[30px] w-[30px] items-center justify-center"
-        >
+      <l-control
+        position="topright"
+        class="leaflet-control leaflet-control-layers"
+      >
+        <router-link to="/" class="flex h-11 w-11 items-center justify-center">
           <v-icon
             name="fa-home"
-            class="ms-[1px]"
+            class="bg- ms-[1px] text-gray-400"
+            scale="1.5"
             style="vertical-align: middle"
           />
         </router-link>
