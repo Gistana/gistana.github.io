@@ -11,14 +11,14 @@ import { RouterLink } from "vue-router";
       >
         <div class="animate-marquee whitespace-nowrap py-12">
           <span class="mx-4"
-            >Selamat Data di Website Desa Tangguh Bencana Kecamatan Bulawa
+            >Selamat Datang di Website Desa Tangguh Bencana Kecamatan Bulawa
             Kabupaten Bone Bolango</span
           >
         </div>
 
         <div class="absolute top-0 animate-marquee2 whitespace-nowrap py-12">
           <span class="mx-4"
-            >Selamat Data di Website Desa Tangguh Bencana Kecamatan Bulawa
+            >Selamat Datang di Website Desa Tangguh Bencana Kecamatan Bulawa
             Kabupaten Bone Bolango</span
           >
         </div>
