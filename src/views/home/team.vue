@@ -12,7 +12,7 @@ import { team } from "@/data";
     class="container flex flex-auto flex-col items-center justify-center"
   >
     <h3 class="text-center text-3xl font-bold" @click="onSlideChange">
-      Tim Web<span class="text-yellow-600">GIS.</span>
+      Tim<span class="ml-1 text-yellow-600">Gisaster.</span>
     </h3>
     <swiper
       class="my-16 w-full"

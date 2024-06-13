@@ -34,7 +34,10 @@ const menuToggle = ref(false);
       @click="menuToggle.checked = false"
     >
       <router-link to="/" class="px-2 py-4 text-2xl font-bold">
-        Web<span class="text-yellow-600">GIS</span>Destana
+        <!-- <span class="text-stroke font-logo font-bold text-yellow-600"
+          >GISASTER</span
+        > -->
+        <img src="/img/LogoGIS.png" width="200" alt="" />
       </router-link>
       <ul
         class="flex w-full list-none flex-col items-center justify-center text-3xl font-bold md:h-full md:flex-row md:justify-end md:text-base md:font-normal"

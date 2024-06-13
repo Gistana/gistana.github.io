@@ -3,7 +3,7 @@
     <p class="container text-sm">
       Built with &hearts; by
       <a href="https://github.com/gistana" class="text-cyan-800 underline"
-        >Gistana Team</a
+        >Gisaster Team</a
       >
       &copy; Copyright 2024 - Mahasiswa KKN MBKM
     </p>
