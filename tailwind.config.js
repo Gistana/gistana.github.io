@@ -14,6 +14,10 @@ module.exports = {
   ],
 
   theme: {
+    fontFamily: {
+      logo: ['quicksand', 'sans-serif'],
+      // Tambahkan font family lainnya jika diperlukan
+    },
     container: {
       center: true,
       padding: {

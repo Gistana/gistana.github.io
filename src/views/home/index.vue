@@ -11,14 +11,14 @@ import { RouterLink } from "vue-router";
       >
         <div class="animate-marquee whitespace-nowrap py-12">
           <span class="mx-4"
-            >Selamat Data di Website Desa Tangguh Bencana Kecamatan Bulawa
+            >Selamat Datang di Website Desa Tangguh Bencana Kecamatan Bulawa
             Kabupaten Bone Bolango</span
           >
         </div>
 
         <div class="absolute top-0 animate-marquee2 whitespace-nowrap py-12">
           <span class="mx-4"
-            >Selamat Data di Website Desa Tangguh Bencana Kecamatan Bulawa
+            >Selamat Datang di Website Desa Tangguh Bencana Kecamatan Bulawa
             Kabupaten Bone Bolango</span
           >
         </div>
@@ -31,7 +31,7 @@ import { RouterLink } from "vue-router";
         >
           <img src="/img/herotop.png" width="150" alt="" />
           <h1 class="text-center text-4xl font-bold">
-            Web<span class="text-yellow-600">GIS</span>Destana
+            WebGIS<span class="text-yellow-600">Destana</span>
           </h1>
           <p class="text-center text-xl lg:text-start">
             Website Sistem Informasi Geografis Desa Tangguh Bencana
@@ -47,7 +47,7 @@ import { RouterLink } from "vue-router";
           </div>
         </div>
         <img
-          class="w-2/4 object-contain md:h-2/5 lg:w-10 lg:flex-[2]"
+          class="hidden w-2/4 object-contain md:h-2/5 lg:block lg:w-10 lg:flex-[2]"
           width="200"
           src="/img/heroimage.png"
           alt=""

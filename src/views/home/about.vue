@@ -9,7 +9,7 @@ import { about } from "../../data";
     <h3 class="text-center text-3xl font-bold lg:text-left">Tentang</h3>
     <div class="flex flex-col items-center gap-x-32 gap-y-16 lg:flex-row">
       <p class="flex-[2] text-lg">
-        WebGIS adalah sebuah website peta interaktif yang dilengkapi dengan
+        Gisaster adalah sebuah website peta interaktif yang dilengkapi dengan
         informasi terkini tentang jalur evakuasi dan titik kumpul yang
         strategis. Dengan navigasi yang intuitif sehinnga dapat dengan mudah
         menemukan rute tercepat dan teraman.
